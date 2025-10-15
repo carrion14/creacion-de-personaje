@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Creación de Personaje – Base HTML+CSS</title>
+  <link rel="stylesheet" href="css/inicio.css">
+</head>
+<body>
+  <main class="app" aria-label="Creador de personaje">
+
+    <!-- IZQUIERDA – pasos (botones pequeños) -->
+    <nav class="steps" aria-label="Pasos">
+      <h2>Pasos</h2>
+      <ul class="step-list">
+        <li><button class="step-btn is-active" data-step="basicos" type="button">
+          <span class="step-index">1</span>
+          <span>
+            <span class="step-title">Datos básicos</span><br>
+            <span class="step-sub">Nombre, sexo, altura, edad</span>
+          </span>
+        </button></li>
+        <li><button class="step-btn" data-step="stats" type="button">
+          <span class="step-index">2</span>
+          <span>
+            <span class="step-title">Estadísticas</span><br>
+            <span class="step-sub">Clase, raza, habilidades, objetos, arma</span>
+          </span>
+        </button></li>
+        <li><button class="step-btn" data-step="mundo" type="button">
+          <span class="step-index">3</span>
+          <span>
+            <span class="step-title">Mundo</span><br>
+            <span class="step-sub">Dificultad, zona inicial, confirmación</span>
+          </span>
+        </button></li>
+      </ul>
+    </nav>
+
+    <!-- CENTRO – contenido informativo / formularios (sin JS aún) -->
+    <section class="panel" aria-live="polite">
+      <header>
+        <h1 style="font-size:18px; margin:0">Creación de personaje</h1>
+        <span class="badge"></span>
+      </header>
+
+      <!-- Sección 1: básicos -->
+      <div class="section is-visible" id="sec-basicos" data-step-content="basicos">
+        <fieldset class="fieldset">
+          <legend>Identidad</legend>
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" placeholder="Ej: Ashen One" />
+
+          <div class="grid-2">
+            <div>
+              <label for="sexo">Sexo</label>
+              <select id="sexo" name="sexo">
+                <option value="">Selecciona…</option>
+                <option value="femenino">Femenino</option>
+                <option value="masculino">Masculino</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <div>
+              <label for="edad">Edad</label>
+              <input id="edad" name="edad" type="number" min="1" max="120" placeholder="18" />
+            </div>
+          </div>
+
+          <label for="altura">Altura (cm)</label>
+          <input id="altura" name="altura" type="number" min="50" max="250" placeholder="175" />
+        </fieldset>
+        <input type="button" value="Siguiente" class="step-btn" onclick="guardarDatosPer()"/>
+      </div>
+
+      <!-- Sección 2: estadísticas -->
+      <div class="section" id="sec-stats" data-step-content="stats" >
+
+      </div>
+
+      <!-- Sección 3: mundo -->
+      <div class="section" id="sec-mundo" data-step-content="mundo">
+
+      </div>
+    </section>
+
+    <!-- DERECHA – resumen en vivo (lo rellenarás con JS) -->
+    <aside class="summary" aria-label="Resumen">
+      <h3>Resumen</h3>
+      <div class="line"><span class="key">Nombre</span><span class="val" id="sum-nombre">—</span></div>
+      <div class="line"><span class="key">Sexo</span><span class="val" id="sum-sexo">—</span></div>
+      <div class="line"><span class="key">Edad</span><span class="val" id="sum-edad">—</span></div>
+      <div class="line"><span class="key">Altura</span><span class="val" id="sum-altura">—</span></div>
+      <div class="line"><span class="key">Clase</span><span class="val" id="sum-clase">—</span></div>
+      <div class="line"><span class="key">Raza</span><span class="val" id="sum-raza">—</span></div>
+      <div class="line"><span class="key">Arma</span><span class="val" id="sum-arma">—</span></div>
+      <div class="line" style="border-bottom:none; display:block">
+        <div class="key" style="margin-bottom:6px">Habilidades</div>
+        <div id="sum-habilidades"><span class="pill">—</span></div>
+      </div>
+      <div class="line" style="border-bottom:none; display:block">
+        <div class="key" style="margin-bottom:6px">Objetos</div>
+        <div id="sum-objetos"><span class="pill">—</span></div>
+      </div>
+      <div class="line"><span class="key">Dificultad</span><span class="val" id="sum-dificultad">—</span></div>
+      <div class="line"><span class="key">Zona</span><span class="val" id="sum-zona">—</span></div>
+    </aside>
+
+  </main>
+
+  <script src="js/clases.js"></script>
+  <script src="js/infoCreacion.js"></script>
+  <script src="js/datosPersonaje.js"></script>
+  <script src="js/seleccionClases.js"></script>
+</body>
+</html>

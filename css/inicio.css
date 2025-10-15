@@ -1,0 +1,120 @@
+:root{
+  --bg: #1a1a1a;            /* fondo oscuro */
+  --parchment: #f4e1c6;     /* pergamino */
+  --ink: #2e1b0f;           /* tinta oscura */
+  --ink-light: #4b2e1c;
+  --accent: #8b5e34;        /* detalles marrón/oro viejo */
+  --border: #c9a66b;        /* borde pergamino */
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+body{
+  font-family: "Times New Roman", serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height:1.6;
+}
+
+.app{
+  display:grid;
+  grid-template-columns: 200px 1fr 250px;
+  gap: 18px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+/* efecto pergamino */
+.panel, .steps, .summary{
+  background: var(--parchment);
+  border: 3px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6), inset 0 0 40px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+/* textura desgastada */
+.panel::before, .steps::before, .summary::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: url('https://www.transparenttextures.com/patterns/parchment.png');
+  opacity:0.3;
+  pointer-events:none;
+}
+
+h1,h2,h3,legend,label{
+  font-family: "Cinzel", serif;
+  color: var(--ink);
+}
+
+.steps h2{
+  font-size: 14px; text-transform: uppercase; letter-spacing:.12em; color: var(--ink-light);
+  margin-bottom: 12px;
+}
+
+.step-list{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+.step-btn{
+  background: var(--parchment);
+  border: 2px solid var(--border);
+  padding: 8px 12px;
+  cursor:pointer;
+  font-family: "Cinzel", serif;
+  font-size:14px;
+  transition: background .2s, transform .1s;
+}
+.step-btn:hover{
+  background: #f0dcb8;
+  transform: scale(1.02);
+}
+.step-btn.is-active{
+  background: #e8d3a8;
+  border-color: var(--accent);
+}
+
+label{
+  display:block;
+  margin:6px 0 3px;
+}
+input[type="text"], input[type="number"], select{
+  width:100%;
+  background:#fdf6e3;
+  border:2px solid var(--border);
+  padding:8px;
+  font-family: inherit;
+  font-size:14px;
+  color:var(--ink);
+}
+
+.fieldset{
+  border:2px dashed var(--accent);
+  padding:10px;
+  margin:12px 0;
+}
+.fieldset legend{ font-size:13px; color:var(--ink-light); }
+
+.summary h3{
+  border-bottom:2px solid var(--border);
+  margin-bottom:8px;
+  padding-bottom:4px;
+}
+.summary .line{
+  display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px dashed var(--border);
+}
+.summary .key{ font-size:13px; color:var(--ink-light); }
+.summary .val{ font-size:13px; font-weight:bold; }
+
+.pill{
+  display:inline-block; font-size:12px; padding:4px 6px; background:#fdf6e3; border:1px solid var(--border); border-radius:4px; margin:2px;
+}
+
+@media(max-width: 1000px){
+  .app{ grid-template-columns: 200px 1fr; }
+  .summary{ display:none; }
+}
+@media(max-width: 700px){
+  .app{ grid-template-columns: 1fr; }
+  .steps{ position:static; }
+}
